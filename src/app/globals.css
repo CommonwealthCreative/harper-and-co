@@ -1,26 +1,66 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-blush: #F2D7D9;
+  --color-blush-dark: #E8B4B8;
+  --color-rose: #C9929A;
+  --color-gold: #C9A96E;
+  --color-gold-light: #E8D5A8;
+  --color-cream: #FDF8F4;
+  --color-cream-dark: #F5EDE4;
+  --color-ivory: #FFFDF9;
+  --color-charcoal: #2C2C2C;
+  --color-charcoal-light: #5A5A5A;
+
+  --font-playfair: var(--font-playfair-display);
+  --font-lato: var(--font-lato-sans);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-cream);
+  color: var(--color-charcoal);
+  font-family: var(--font-lato), "Lato", sans-serif;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-playfair), "Playfair Display", serif;
+}
+
+/* Hero staggered load animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-animate {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.hero-animate-1 { animation-delay: 0.1s; }
+.hero-animate-2 { animation-delay: 0.3s; }
+.hero-animate-3 { animation-delay: 0.5s; }
+.hero-animate-4 { animation-delay: 0.7s; }
+
+/* Scroll-triggered fade in */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
